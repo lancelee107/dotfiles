@@ -22,7 +22,7 @@ plugins=(
 )
 
 # Color of autosuggest text
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=156'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=213'
 
 # Git Aliases
 alias gp="git push -u origin HEAD"
@@ -31,6 +31,8 @@ alias gai="git add -i"
 # Other Aliases
 alias vim="nvim"
 alias dps="docker ps --format 'table {{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}'"
+alias fz='nvim -o `fzf`'
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # Sick Function To Auto LS When CD
 function chpwd() {
@@ -81,6 +83,7 @@ search()
   fi
 }
 
+
 # Source All My Shit
 source ~/.p10k.zsh
 source $ZSH/oh-my-zsh.sh
@@ -91,3 +94,16 @@ export EDITOR='nvim'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd -t file -H'
+export FZF_DEFAULT_OPS="--extended"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/slss.zsh
