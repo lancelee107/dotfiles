@@ -25,64 +25,31 @@ plugins=(
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=213'
 
 # Git Aliases
-alias gp="git push -u origin HEAD"
 alias gai="git add -i"
+alias gac="git add . && git commit -m" # + commit message
 
 # Other Aliases
-alias vim="nvim"
+alias vi="nvim"
+alias ve="vim +Explore"
 alias dps="docker ps --format 'table {{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}'"
-alias fz='nvim -o `fzf`'
+alias fz='vim -o `fzf`'
+alias lg='lazygit'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
 # Sick Function To Auto LS When CD
 function chpwd() {
     emulate -L zsh
-    ls -a
+    ls -al
 }
 
-# Ranger Danger
-ranger() {
-  if [ -z "$RANGER_LEVEL" ]; then
-      /usr/local/bin/ranger "$@"
-  else
-      exit
-  fi
+# ssh into prod
+tgip() {
+    if [ -z $2 ]; then
+        aws-vault exec tg-$1 -- crowbar containerip #  | tail -n 1
+    else
+        aws-vault exec tg-$1 -- crowbar containerip -c $2 -s $3 | tail -n 1
+    fi
 }
-
-# So sick method to merge develop into feature branch
-mdev() {
-    gco develop
-    gl
-    gco feature/$1
-    g merge develop
-    gp
-}
-
-# Sick Searches
-isearch()
-{
-  if [ -z $1 ]; then
-      echo "No Search String Given"
-  elif [ -z $2 ]; then
-      grep -riIn --exclude-dir=env -C 1 --color $1 .
-  elif [ -z $3 ]; then
-      grep -riIn --exclude-dir=env -C $2 --color $1 .
-  else
-      grep -riIn --exclude-dir=env -C $2 --color $1 $3
-  fi
-}
-
-search()
-{
-  if [ -z $1 ]; then
-      echo "No Search String Given"
-  elif [ -z $2 ]; then
-      grep -rIn --exclude-dir=env -C 1 --color $1 .
-  else
-      grep -rIn --exclude-dir=env -C $2 --color $1 .
-  fi
-}
-
 
 # Source All My Shit
 source ~/.p10k.zsh
@@ -90,7 +57,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.bin/tmuxinator.zsh
 
 # Set Default Editor
-export EDITOR='nvim'
+export EDITOR='vim'
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
@@ -107,3 +74,7 @@ export FZF_DEFAULT_OPS="--extended"
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/slss.zsh
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

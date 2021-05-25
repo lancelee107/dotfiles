@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/Users/lance/.aws'
-let g:netrw_dirhist_2='/Users/lance/Code/dotfiles/.config/nvim'
-let g:netrw_dirhist_1='/Users/lance/.aws'
+let g:netrw_dirhist_3='/Users/lance/.vim'
+let g:netrw_dirhist_2='/Users/lance/.vim/syntax'
+let g:netrw_dirhist_1='/Users/lance/.vim'
+let g:netrw_dirhist_0='/Users/lance/.vim/syntax'
+let g:netrw_dirhist_9='/Users/lance/.vim'
+let g:netrw_dirhist_8='/Users/lance/Code/Shopify/client'
+let g:netrw_dirhist_7='/Users/lance/Code/Shopify/server'
+let g:netrw_dirhist_6='/Users/lance/.ssh'
+let g:netrw_dirhist_5='/Users/lance/Code/API-Pricing/src/apps/entity/migrations'
+let g:netrw_dirhist_4='/Users/lance/Code/terraform-infrastructure/ticketguardian-sandbox/services/dashboard-v2'
