@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/Users/lance/Code/dotfiles/.vim'
+let g:netrw_dirhist_6='/Users/lance/Code/dotfiles'
+let g:netrw_dirhist_5='/Users/lance/Code/dotfiles/.vim/after'
+let g:netrw_dirhist_4='/Users/lance/Code/dotfiles/.vim/after/ftplugin'
+let g:netrw_dirhist_3='/Users/lance/Code/dotfiles/.vim/after'
+let g:netrw_dirhist_2='/Users/lance/Code/dotfiles/.vim'
+let g:netrw_dirhist_1='/Users/lance'
+let g:netrw_dirhist_0='/Users/lance/Code'
+let g:netrw_dirhist_9='/Users/lance/Code/impressions'
+let g:netrw_dirhist_8='/Users/lance/Code/impressions/src'

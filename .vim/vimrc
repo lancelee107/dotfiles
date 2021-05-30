@@ -1,0 +1,106 @@
+" VIMRC
+
+" Plugins {{{
+call plug#begin('~/.vim/plugged')
+" Tools
+  Plug 'vimwiki/vimwiki'
+    set nocompatible
+    let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      	 \ 'syntax': 'markdown', 'ext': '.md'}]
+  Plug 'tpope/vim-vinegar'
+" Syntax
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-repeat'
+  Plug 'nvie/vim-flake8'
+" Theme	
+  Plug 'NLKNguyen/papercolor-theme'
+call plug#end()
+" }}}
+
+" Basics {{{
+filetype plugin indent on         " Add filetype, plugin, and indent support
+syntax on                         " Turn on syntax highlighting
+set backspace=indent,eol,start
+set hidden
+set noswapfile
+set nu rnu
+set hls incsearch
+set clipboard=unnamed
+set formatoptions=tcroql          " Auto-wrap comments
+set wildmenu                      " Display matches in command-line mode
+setl wildignore=**/node_modules/**,**/dist/**,*.pyc
+set tags=./tags;,tags;            " Find tags relative to current file and directory
+"}}}
+" hi
+" Color Settings {{{
+colorscheme PaperColor
+set background=dark
+set cursorline
+hi! Normal ctermbg=NONE guibg=NONE 
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+highlight LineNr ctermfg=NONE ctermbg=NONE
+highlight CursorLine ctermfg=NONE ctermbg=Black cterm=bold gui=bold
+let python_highlight_all = 1
+" }}}
+
+" Paths {{{
+let $RTP=split(&runtimepath, ',')[0] " Set RTP to current directory
+let $RC="$HOME/.vim/vimrc"           " Set vimrc path
+set path=.,**                        " Set path, remove ** if too laggy or on big files.
+" }}}
+
+" Status-line {{{
+set laststatus=2                 " Show status line no matter what
+set statusline=
+set statusline+=%#IncSearch#
+set statusline+=\ %y
+set statusline+=\ %r
+set statusline+=%#CursorLineNr#
+set statusline+=\ %F
+set statusline+=%=               " Right side settings
+set statusline+=%#Search#
+set statusline+=\ %l/%L
+set statusline+=\ [%c]
+" }}}
+
+" Mappings {{{
+" Self-explanatory convenience mappings
+vnoremap ; :
+vnoremap : ;
+nnoremap ; :
+nnoremap : ;
+
+" Often utilize vertical splits
+cnoreabbrev v vert
+" Quit out of ex-mode faster
+cnoreabbrev vv visual
+" Fast global commands
+nnoremap ,g :g//#<Left><Left>
+" Join yanked text on a yank (needed for terminal mode copies)
+" vnoremap <silent> yy y<CR>:call Osc52Yank()<CR>
+" Make the directory for which the current file should be in
+nnoremap ,m :!mkdir -p %:h<CR>
+
+" Bindings for more efficient path-based file navigation
+nnoremap ,f :find *
+nnoremap ,v :vert sfind *
+nnoremap ,F :find <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+nnoremap ,V :vert sfind <C-R>=fnameescape(expand('%:p:h')).'/**/*'<CR>
+
+" Argslist navigation
+nnoremap [a :previous<CR>
+nnoremap ]a :next<CR>
+nnoremap [A :first<CR>
+nnoremap ]A :last<CR>
+" }}}
+
+" fzf
+" Open files in horizontal split
+nnoremap <silent> <C-p> :call fzf#run({
+\   'down': '40%',
+\   'sink': 'botright split' })<CR>
+
+"" ranger
+"map <leader>r :Ranger<CR>
+
