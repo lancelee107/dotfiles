@@ -104,3 +104,4 @@ nnoremap <silent> <C-p> :call fzf#run({
 "" ranger
 "map <leader>r :Ranger<CR>
 
+set tags=tags
