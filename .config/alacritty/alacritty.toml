@@ -1,0 +1,55 @@
+[colors]
+# Catppuccin Mocha
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "#1e1e2e"
+foreground = "#cdd6f4"
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.selection]
+background = "#585b70"
+text = "#cdd6f4"
+
+[colors.normal]
+black = "#11111b"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#cdd6f4"
+
+[colors.dim]
+black = "#11111b"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#585b70"
+
+[font]
+size = 13.25
+normal = { family = "JetBrainsMono Nerd Font Mono" }
+
+[window]
+decorations = "Buttonless"
+dimensions = { columns = 190, lines = 60 }
+padding = { x = 15, y = 15 }
+

@@ -1,0 +1,6 @@
+# Raycast: extension source is store-managed and UUID-based; reinstall from README list
+.config/raycast/extensions/
+
+# AWS: contain secrets / credentials
+.config/AWS VPN Client/
+.config/AWSVPNClient/

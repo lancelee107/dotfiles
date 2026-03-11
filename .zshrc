@@ -1,24 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="/opt/homebrew/bin:$HOME/.local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/lance/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Current Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS=true
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Plugins
 plugins=(
     git
-    Z
     you-should-use
-	zsh-autosuggestions
+    zsh-autosuggestions
 )
 
 # Color of autosuggest text
@@ -29,10 +23,8 @@ alias gai="git add -i"
 alias gac="git add . && git commit -m" # + commit message
 
 # Other Aliases
-alias vi="nvim"
-alias ve="vim +Explore"
-alias dps="docker ps --format 'table {{.Image}}\t{{.RunningFor}}\t{{.Status}}\t{{.Names}}'"
-alias fz='vim -o `fzf`'
+alias vim="nvim"
+alias fz='nvim -o `fzf`'
 alias lg='lazygit'
 alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
 
@@ -54,27 +46,23 @@ tgip() {
 # Source All My Shit
 source ~/.p10k.zsh
 source $ZSH/oh-my-zsh.sh
-source ~/.bin/tmuxinator.zsh
 
 # Set Default Editor
-export EDITOR='vim'
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export EDITOR='nvim'
+
+# autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd -t file -H'
 export FZF_DEFAULT_OPS="--extended"
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/lance/Code/impressions/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/lance/Code/impressions/node_modules/tabtab/.completions/slss.zsh
 
-# tabtab source for packages
-# uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# direnv: auto-activate venv / env per directory (.envrc)
+eval "$(direnv hook zsh)"
